@@ -1,6 +1,11 @@
+# Dependencies
 node_modules/
-.DS_Store
+
+# Production maps / logs
 *.log
 dist/*.map
+.DS_Store
+
+# IDE configuration
 .vscode/
 .idea/
