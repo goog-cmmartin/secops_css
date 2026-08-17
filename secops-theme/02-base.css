@@ -1,0 +1,27 @@
+/* 02-base.css - Modern Resets & Base Surface Formatting */
+
+body, html {
+  background-color: var(--secops-bg-base) !important;
+  color: var(--secops-text-primary) !important;
+  font-family: 'Google Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Sleek Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secops-bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secops-bg-surface-3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secops-brand-primary);
+}

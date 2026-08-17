@@ -1,0 +1,260 @@
+/**
+ * Google SecOps Design System Tokens
+ * Version: 1.0.0
+ * Verified against live Google SecOps (SDL)
+ */
+
+:root,
+[data-theme="dark"],
+.smp-theme-dark {
+  /* Color Palette - Core Primitives */
+  --secops-color-blue-50: #e8f0fe;
+  --secops-color-blue-100: #d2e3fc;
+  --secops-color-blue-200: #aecbfa;
+  --secops-color-blue-300: #8ab4f8;
+  --secops-color-blue-500: #1a73e8;
+  --secops-color-blue-600: #1967d2;
+  --secops-color-blue-700: #185abc;
+
+  --secops-color-red-100: #fce8e6;
+  --secops-color-red-300: #f28b82;
+  --secops-color-red-400: #ff5a50;
+  --secops-color-red-500: #ea4335;
+  --secops-color-red-600: #d93025;
+
+  --secops-color-orange-300: #ffbc75;
+  --secops-color-orange-400: #fa7b17;
+  --secops-color-orange-500: #f29900;
+  --secops-color-orange-600: #e37400;
+
+  --secops-color-yellow-300: #fee20b;
+  --secops-color-yellow-400: #fcc934;
+  --secops-color-yellow-500: #fdbd04;
+
+  --secops-color-teal-300: #80c7b8;
+  --secops-color-teal-400: #54ab98;
+  --secops-color-teal-500: #2aa292;
+  --secops-color-green-500: #34a853;
+
+  --secops-color-cyan-300: #78d9ec;
+  --secops-color-cyan-400: #24c1e0;
+  --secops-color-cyan-500: #12b5cb;
+
+  --secops-color-purple-300: #d272ff;
+  --secops-color-purple-400: #be35ff;
+  --secops-color-purple-500: #a142f4;
+
+  /* Surface & Background Elevations (Dark Mode) */
+  --secops-bg-canvas: #161625;
+  --secops-surface-low: #1b2134;
+  --secops-surface-container: #1f283e;
+  --secops-surface-high: #27324d;
+  --secops-surface-highest: #2f3d5c;
+  --secops-surface-hover: #293550;
+  --secops-surface-active: #324163;
+  --secops-surface-modal: #1b2134;
+  --secops-editor-bg: #101420;
+  --secops-editor-gutter: #161a29;
+
+  /* Typography & Foreground Colors */
+  --secops-text-primary: #c3d2e8;
+  --secops-text-heading: #e8eaed;
+  --secops-text-secondary: #9aa0a6;
+  --secops-text-disabled: #5f6368;
+  --secops-text-accent: #8ab4f8;
+  --secops-text-inverse: #161625;
+  --secops-text-code: #a8c7fa;
+
+  /* Borders & Dividers */
+  --secops-border-subtle: #222d42;
+  --secops-border-default: #2a3650;
+  --secops-border-hover: #3d4d6e;
+  --secops-border-focus: #8ab4f8;
+  --secops-border-selected: #1a73e8;
+
+  /* Semantic Severity Tokens (Dark Mode) */
+  --secops-status-critical: #ff5a50;
+  --secops-status-critical-bg: rgba(255, 90, 80, 0.16);
+  --secops-status-critical-border: rgba(255, 90, 80, 0.35);
+
+  --secops-status-high: #fa7b17;
+  --secops-status-high-bg: rgba(250, 123, 23, 0.16);
+  --secops-status-high-border: rgba(250, 123, 23, 0.35);
+
+  --secops-status-medium: #fcc934;
+  --secops-status-medium-bg: rgba(252, 201, 52, 0.16);
+  --secops-status-medium-border: rgba(252, 201, 52, 0.35);
+
+  --secops-status-low: #24c1e0;
+  --secops-status-low-bg: rgba(36, 193, 224, 0.16);
+  --secops-status-low-border: rgba(36, 193, 224, 0.35);
+
+  --secops-status-success: #54ab98;
+  --secops-status-success-bg: rgba(84, 171, 152, 0.16);
+  --secops-status-success-border: rgba(84, 171, 152, 0.35);
+
+  --secops-chip-event: #d272ff;
+  --secops-chip-event-bg: rgba(190, 53, 255, 0.16);
+  --secops-chip-event-border: rgba(190, 53, 255, 0.35);
+
+  /* Primary Interactive CTA */
+  --secops-cta-primary: #1a73e8;
+  --secops-cta-primary-hover: #1b66c9;
+  --secops-cta-primary-active: #185abc;
+  --secops-cta-primary-text: #ffffff;
+
+  /* Gemini AI Gradient & Tokens */
+  --secops-gemini-gradient-start: #1f283e;
+  --secops-gemini-gradient-end: #27324d;
+  --secops-gemini-sparkle: #8ab4f8;
+  --secops-gemini-glow: rgba(138, 180, 248, 0.15);
+
+  /* Table Specific Tokens */
+  --secops-table-header-bg: #1b2134;
+  --secops-table-row-even: #161625;
+  --secops-table-row-odd: #191c2e;
+  --secops-table-row-hover: #232c44;
+  --secops-table-row-selected: #1f3358;
+
+  /* Scrollbar */
+  --secops-scrollbar-thumb: #2f3d5c;
+  --secops-scrollbar-track: #161625;
+
+  /* Uno System Compatibility Mappings */
+  --uno-sys-color--surface: var(--secops-bg-canvas);
+  --uno-sys-color--surface-container: var(--secops-surface-container);
+  --uno-sys-color--surface-container-low: var(--secops-surface-low);
+  --uno-sys-color--surface-container-high: var(--secops-surface-high);
+  --uno-sys-color--on-surface: var(--secops-text-primary);
+  --uno-sys-color--on-surface-variant: var(--secops-text-secondary);
+  --uno-sys-color--primary: var(--secops-cta-primary);
+  --uno-sys-color--outline-variant: var(--secops-border-default);
+}
+
+/* ==========================================================================
+   LIGHT MODE TOKENS
+   ========================================================================== */
+
+[data-theme="light"],
+.smp-theme-light {
+  /* Surface & Background Elevations (Light Mode) */
+  --secops-bg-canvas: #ffffff;
+  --secops-surface-low: #f8f9fa;
+  --secops-surface-container: #ffffff;
+  --secops-surface-high: #f1f3f4;
+  --secops-surface-highest: #e8eaed;
+  --secops-surface-hover: #f1f3f4;
+  --secops-surface-active: #e8eaed;
+  --secops-surface-modal: #ffffff;
+  --secops-editor-bg: #f8f9fa;
+  --secops-editor-gutter: #e8eaed;
+
+  /* Typography & Foreground Colors */
+  --secops-text-primary: #202124;
+  --secops-text-heading: #1f1f1f;
+  --secops-text-secondary: #5f6368;
+  --secops-text-disabled: #80868b;
+  --secops-text-accent: #1a73e8;
+  --secops-text-inverse: #ffffff;
+  --secops-text-code: #0b57d0;
+
+  /* Borders & Dividers */
+  --secops-border-subtle: #f1f3f4;
+  --secops-border-default: #dadce0;
+  --secops-border-hover: #bdc1c6;
+  --secops-border-focus: #1a73e8;
+  --secops-border-selected: #1a73e8;
+
+  /* Semantic Severity Tokens (Light Mode) */
+  --secops-status-critical: #d93025;
+  --secops-status-critical-bg: #fce8e6;
+  --secops-status-critical-border: #fad2cf;
+
+  --secops-status-high: #e37400;
+  --secops-status-high-bg: #feefe3;
+  --secops-status-high-border: #fdd0a2;
+
+  --secops-status-medium: #b06000;
+  --secops-status-medium-bg: #fef7e0;
+  --secops-status-medium-border: #feeaa7;
+
+  --secops-status-low: #007b83;
+  --secops-status-low-bg: #e0f2f1;
+  --secops-status-low-border: #b2dfdb;
+
+  --secops-status-success: #137333;
+  --secops-status-success-bg: #e6f4ea;
+  --secops-status-success-border: #ceead6;
+
+  --secops-chip-event: #8430ce;
+  --secops-chip-event-bg: #f3e8fd;
+  --secops-chip-event-border: #e1c0fa;
+
+  /* Primary Interactive CTA */
+  --secops-cta-primary: #1a73e8;
+  --secops-cta-primary-hover: #1765cc;
+  --secops-cta-primary-active: #1557b0;
+  --secops-cta-primary-text: #ffffff;
+
+  /* Gemini AI Gradient & Tokens */
+  --secops-gemini-gradient-start: #e8f0fe;
+  --secops-gemini-gradient-end: #f8fafd;
+  --secops-gemini-sparkle: #1a73e8;
+  --secops-gemini-glow: rgba(26, 115, 232, 0.12);
+
+  /* Table Specific Tokens */
+  --secops-table-header-bg: #f8f9fa;
+  --secops-table-row-even: #ffffff;
+  --secops-table-row-odd: #fbfbfc;
+  --secops-table-row-hover: #f1f3f4;
+  --secops-table-row-selected: #e8f0fe;
+
+  /* Scrollbar */
+  --secops-scrollbar-thumb: #dadce0;
+  --secops-scrollbar-track: #f1f3f4;
+
+  /* Uno System Compatibility Mappings */
+  --uno-sys-color--surface: var(--secops-bg-canvas);
+  --uno-sys-color--surface-container: var(--secops-surface-container);
+  --uno-sys-color--surface-container-low: var(--secops-surface-low);
+  --uno-sys-color--surface-container-high: var(--secops-surface-high);
+  --uno-sys-color--on-surface: var(--secops-text-primary);
+  --uno-sys-color--on-surface-variant: var(--secops-text-secondary);
+  --uno-sys-color--primary: var(--secops-cta-primary);
+  --uno-sys-color--outline-variant: var(--secops-border-default);
+}
+
+/* ==========================================================================
+   SHARED TYPOGRAPHY & SPACING TOKENS
+   ========================================================================== */
+
+:root {
+  --secops-font-family-sans: "Google Sans", "Source Sans Pro", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --secops-font-family-mono: "Google Sans Mono", "Roboto Mono", "Fira Code", monospace;
+
+  --secops-font-size-xs: 10px;
+  --secops-font-size-sm: 12px;
+  --secops-font-size-md: 14px;
+  --secops-font-size-lg: 16px;
+  --secops-font-size-xl: 18px;
+  --secops-font-size-2xl: 22px;
+
+  --secops-font-weight-regular: 400;
+  --secops-font-weight-medium: 500;
+  --secops-font-weight-semibold: 600;
+  --secops-font-weight-bold: 700;
+
+  --secops-radius-xs: 2px;
+  --secops-radius-sm: 4px;
+  --secops-radius-md: 8px;
+  --secops-radius-lg: 12px;
+  --secops-radius-pill: 9999px;
+
+  --secops-space-1: 4px;
+  --secops-space-2: 8px;
+  --secops-space-3: 12px;
+  --secops-space-4: 16px;
+  --secops-space-5: 20px;
+  --secops-space-6: 24px;
+  --secops-space-8: 32px;
+}

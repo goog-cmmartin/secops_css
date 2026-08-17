@@ -1,0 +1,69 @@
+/* 05-search-tables.css - UDM Search Results, PrimeNG Data Tables & Aggregations */
+
+/* PrimeNG Data Tables (p-table) & SecOps Tables */
+p-table,
+.p-datatable,
+sc-data-table,
+sc-log-results-table,
+sc-raw-log-results-table-widget {
+  background-color: var(--secops-bg-surface-1) !important;
+  color: var(--secops-text-primary) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* Table Headers */
+.p-datatable .p-datatable-thead > tr > th,
+.header-text-row,
+.header-rows {
+  background-color: var(--secops-bg-surface-2) !important;
+  color: var(--secops-text-secondary) !important;
+  border-bottom: 1px solid var(--secops-border-subtle) !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Table Rows & Cells */
+.p-datatable .p-datatable-tbody > tr,
+.row {
+  background-color: var(--secops-bg-surface-1) !important;
+  border-bottom: 1px solid var(--secops-border-subtle) !important;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.p-datatable .p-datatable-tbody > tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover,
+.row:hover {
+  background-color: rgba(56, 189, 248, 0.08) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  border-color: var(--secops-border-subtle) !important;
+  color: var(--secops-text-primary) !important;
+}
+
+/* Aggregations Sidebar & Field Lists */
+mc-fields-aggregations,
+mc-sidebar,
+mc-aggregated-field-list-item {
+  background-color: var(--secops-bg-base) !important;
+  border-right: 1px solid var(--secops-border-subtle) !important;
+}
+
+mc-aggregated-field-list-item:hover {
+  background-color: var(--secops-bg-surface-2) !important;
+  color: var(--secops-brand-primary) !important;
+}
+
+/* Filter Bar & Controls */
+mc-filter-bar,
+sc-search-input,
+sc-search-summary-widget {
+  background-color: var(--secops-bg-surface-1) !important;
+  border-bottom: 1px solid var(--secops-border-subtle) !important;
+}

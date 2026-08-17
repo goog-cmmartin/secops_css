@@ -1,0 +1,29 @@
+/* 03-shell.css - Google SecOps Shell & Navigation */
+
+/* Navigation Top Header Bar */
+sc-navigation-header,
+.sc-navigation-header,
+smp-layout-header,
+header {
+  background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 100%) !important;
+  border-bottom: 1px solid var(--secops-border-highlight) !important;
+}
+
+/* Sidebar Drawer Nav */
+sc-navigation-sidebar,
+.sc-navigation-sidebar,
+mat-sidenav {
+  background-color: var(--secops-bg-base) !important;
+  border-right: 1px solid var(--secops-border-subtle) !important;
+}
+
+/* Navigation Branding & User Avatar */
+sc-navigation-branding {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+tn-user-avatar, sc-user-profile {
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}

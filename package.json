@@ -1,0 +1,29 @@
+{
+  "name": "@google-secops/theme",
+  "version": "1.0.0",
+  "description": "Google SecOps (Chronicle SIEM & SOAR) Design System, CSS Theme Framework, and Style Guide for Dark & Light modes",
+  "main": "dist/secops-theme.css",
+  "style": "dist/secops-theme.css",
+  "scripts": {
+    "dev": "vite docs",
+    "build": "cat secops-theme/*.css > dist/secops-theme.css"
+  },
+  "keywords": [
+    "secops",
+    "google-cloud",
+    "chronicle",
+    "siem",
+    "soar",
+    "design-system",
+    "theme",
+    "dark-mode",
+    "light-mode",
+    "style-guide"
+  ],
+  "author": "Google SecOps Community",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/google-secops/secops-theme.git"
+  }
+}

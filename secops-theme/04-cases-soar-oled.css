@@ -1,0 +1,84 @@
+/* 04-cases-soar-oled.css - Case Management & SOAR Investigation Views */
+
+sc-case-page,
+sc-cases-page,
+sc-case-detailed-view,
+sc-case-overview,
+sc-case-overview-layout {
+  background-color: #000000 !important;
+}
+
+/* Cases List Header & Toolbar */
+sc-cases-list-header,
+.sc-cases-list-header,
+.header-gap {
+  background-color: #09090b !important;
+  border-bottom: 1px solid var(--secops-border-subtle) !important;
+}
+
+/* Banners & Alerts */
+smp-alert,
+.case-banner,
+.banner {
+  background-color: #09090b !important;
+  border: 1px solid var(--secops-border-medium) !important;
+  color: #ffffff !important;
+}
+
+/* Gemini AI Summary, Box Containers & Investigation Cards */
+sc-agentic-investigation,
+sc-case-summary-investigation-banner,
+uno-card,
+smp-card,
+homepage-case-item,
+.smp-card,
+.box,
+.case-reasons,
+.summary,
+.next-steps {
+  background: #09090b !important;
+  border: 1px solid var(--secops-border-medium) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+}
+
+sc-agentic-investigation:hover,
+uno-card:hover,
+smp-card:hover,
+.box:hover {
+  border-color: var(--secops-brand-primary) !important;
+}
+
+/* Table Captions & Headers */
+.table-caption {
+  background-color: #121215 !important;
+  color: var(--secops-text-secondary) !important;
+  border-bottom: 1px solid var(--secops-border-subtle) !important;
+}
+
+/* Case Widgets & Tables */
+sc-case-widget-container,
+sc-alert-pending-actions-table,
+sc-alerts-widget-table,
+sc-detections-table,
+sc-entities-highlight-widget-table,
+sc-events-table,
+alerts-widget,
+case-assistant-widget {
+  background-color: #09090b !important;
+  border: 1px solid var(--secops-border-subtle) !important;
+  border-radius: 8px !important;
+}
+
+/* Status Chips & Badges */
+uno-info-chip,
+uno-status-chip,
+uno-tag-chip,
+priority-indicator,
+smp-badge {
+  background-color: #18181b !important;
+  border: 1px solid var(--secops-border-subtle) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}

@@ -1,0 +1,295 @@
+@import url('./tokens.css');
+
+/* ==========================================================================
+   BASE & RESET
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--secops-font-family-sans);
+  font-size: var(--secops-font-size-md);
+  color: var(--secops-text-primary);
+  background-color: var(--secops-bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secops-scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secops-scrollbar-thumb);
+  border-radius: var(--secops-radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secops-border-hover);
+}
+
+/* ==========================================================================
+   APP SHELL & NAVIGATION
+   ========================================================================== */
+
+.secops-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 var(--secops-space-4);
+  background-color: var(--secops-surface-low);
+  border-bottom: 1px solid var(--secops-border-default);
+}
+
+.secops-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--secops-space-3);
+  font-size: var(--secops-font-size-lg);
+  font-weight: var(--secops-font-weight-semibold);
+  color: var(--secops-text-heading);
+}
+
+.secops-topbar-brand .shield-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--secops-cta-primary);
+}
+
+.secops-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--secops-space-3);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.secops-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--secops-space-2);
+  height: 32px;
+  padding: 0 var(--secops-space-3);
+  font-family: var(--secops-font-family-sans);
+  font-size: var(--secops-font-size-md);
+  font-weight: var(--secops-font-weight-semibold);
+  border-radius: var(--secops-radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.secops-btn:focus-visible {
+  outline: 2px solid var(--secops-border-focus);
+  outline-offset: 1px;
+}
+
+/* Primary Filled (Blue CTA) */
+.secops-btn-primary {
+  background-color: var(--secops-cta-primary);
+  color: var(--secops-cta-primary-text);
+  border-color: var(--secops-cta-primary);
+}
+
+.secops-btn-primary:hover {
+  background-color: var(--secops-cta-primary-hover);
+  border-color: var(--secops-cta-primary-hover);
+}
+
+.secops-btn-primary:active {
+  background-color: var(--secops-cta-primary-active);
+}
+
+/* Secondary Outlined / Stroke */
+.secops-btn-outlined {
+  background-color: transparent;
+  color: var(--secops-text-primary);
+  border-color: var(--secops-border-default);
+}
+
+.secops-btn-outlined:hover {
+  background-color: var(--secops-surface-hover);
+  border-color: var(--secops-border-hover);
+  color: var(--secops-text-heading);
+}
+
+/* Ghost / Text Button */
+.secops-btn-ghost {
+  background-color: transparent;
+  color: var(--secops-text-accent);
+  border-color: transparent;
+}
+
+.secops-btn-ghost:hover {
+  background-color: var(--secops-surface-hover);
+}
+
+/* ==========================================================================
+   SEVERITY BADGES & CHIPS
+   ========================================================================== */
+
+.secops-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  font-family: var(--secops-font-family-sans);
+  font-size: var(--secops-font-size-xs);
+  font-weight: var(--secops-font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: var(--secops-radius-xs);
+  line-height: 1.2;
+}
+
+.secops-badge-critical {
+  background-color: var(--secops-status-critical-bg);
+  color: var(--secops-status-critical);
+  border: 1px solid var(--secops-status-critical-border);
+}
+
+.secops-badge-high {
+  background-color: var(--secops-status-high-bg);
+  color: var(--secops-status-high);
+  border: 1px solid var(--secops-status-high-border);
+}
+
+.secops-badge-medium {
+  background-color: var(--secops-status-medium-bg);
+  color: var(--secops-status-medium);
+  border: 1px solid var(--secops-status-medium-border);
+}
+
+.secops-badge-low {
+  background-color: var(--secops-status-low-bg);
+  color: var(--secops-status-low);
+  border: 1px solid var(--secops-status-low-border);
+}
+
+.secops-badge-success {
+  background-color: var(--secops-status-success-bg);
+  color: var(--secops-status-success);
+  border: 1px solid var(--secops-status-success-border);
+}
+
+.secops-badge-event {
+  background-color: var(--secops-chip-event-bg);
+  color: var(--secops-chip-event);
+  border: 1px solid var(--secops-chip-event-border);
+}
+
+/* ==========================================================================
+   DATA TABLES (UDM Event Explorer)
+   ========================================================================== */
+
+.secops-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--secops-surface-container);
+  border: 1px solid var(--secops-border-default);
+  border-radius: var(--secops-radius-sm);
+}
+
+.secops-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.secops-table th {
+  background-color: var(--secops-table-header-bg);
+  color: var(--secops-text-secondary);
+  font-size: 11px;
+  font-weight: var(--secops-font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: var(--secops-space-2) var(--secops-space-3);
+  border-bottom: 1px solid var(--secops-border-default);
+  white-space: nowrap;
+}
+
+.secops-table td {
+  padding: var(--secops-space-2) var(--secops-space-3);
+  font-size: var(--secops-font-size-md);
+  color: var(--secops-text-primary);
+  border-bottom: 1px solid var(--secops-border-subtle);
+  vertical-align: middle;
+}
+
+.secops-table tr:nth-child(even) {
+  background-color: var(--secops-table-row-even);
+}
+
+.secops-table tr:nth-child(odd) {
+  background-color: var(--secops-table-row-odd);
+}
+
+.secops-table tbody tr:hover {
+  background-color: var(--secops-table-row-hover);
+}
+
+.secops-table .col-mono {
+  font-family: var(--secops-font-family-mono);
+  font-size: var(--secops-font-size-sm);
+}
+
+/* ==========================================================================
+   GEMINI AI SUMMARY CARD
+   ========================================================================== */
+
+.secops-gemini-card {
+  padding: var(--secops-space-4);
+  background: linear-gradient(135deg, var(--secops-gemini-gradient-start), var(--secops-gemini-gradient-end));
+  border: 1px solid rgba(138, 180, 248, 0.25);
+  border-radius: var(--secops-radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.secops-gemini-header {
+  display: flex;
+  align-items: center;
+  gap: var(--secops-space-2);
+  font-weight: var(--secops-font-weight-semibold);
+  color: var(--secops-text-heading);
+  margin-bottom: var(--secops-space-2);
+}
+
+.secops-gemini-header .sparkle {
+  color: var(--secops-gemini-sparkle);
+}
+
+/* ==========================================================================
+   MONACO UDM EDITOR CANVAS
+   ========================================================================== */
+
+.secops-udm-editor {
+  background-color: var(--secops-editor-bg);
+  border: 1px solid var(--secops-border-default);
+  border-radius: var(--secops-radius-sm);
+  padding: var(--secops-space-3);
+  font-family: var(--secops-font-family-mono);
+  font-size: var(--secops-font-size-sm);
+  color: var(--secops-text-code);
+  min-height: 60px;
+}
+
+.secops-udm-editor:focus-within {
+  border-color: var(--secops-border-focus);
+}

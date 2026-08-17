@@ -1,0 +1,40 @@
+/* 06-monaco.css - Monaco Code Editor (UDM Search & YARA-L Rules) */
+
+.monaco-editor,
+.monaco-editor-background,
+.monaco-editor .inputarea.ime-input {
+  background-color: var(--secops-bg-base) !important;
+}
+
+/* Line Numbers & Margin Gutter */
+.monaco-editor .margin {
+  background-color: #080c14 !important;
+  border-right: 1px solid var(--secops-border-subtle) !important;
+}
+
+.monaco-editor .line-numbers {
+  color: #4b5563 !important;
+}
+
+.monaco-editor .current-line {
+  background-color: rgba(56, 189, 248, 0.05) !important;
+  border: none !important;
+}
+
+/* Syntax Highlighting Tweaks */
+.monaco-editor .token.keyword {
+  color: #f472b6 !important; /* Pink keywords */
+  font-weight: 600;
+}
+
+.monaco-editor .token.string {
+  color: #34d399 !important; /* Mint green strings */
+}
+
+.monaco-editor .token.number {
+  color: #fbbf24 !important; /* Amber numbers */
+}
+
+.monaco-editor .token.variable {
+  color: #38bdf8 !important; /* Sky blue variables */
+}

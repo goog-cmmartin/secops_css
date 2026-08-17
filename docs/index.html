@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="smp-theme-dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google SecOps Theme & Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Mono:wght@400;500;600&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/tokens.css">
+  <link rel="stylesheet" href="dist/secops-theme.css">
+  <style>
+    /* Showcase Layout Styles */
+    :root {
+      --showcase-max-width: 1440px;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--secops-bg-canvas);
+      color: var(--secops-text-primary);
+      transition: background-color 200ms ease, color 200ms ease;
+    }
+
+    .showcase-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--secops-surface-low);
+      border-bottom: 1px solid var(--secops-border-default);
+      padding: 0 var(--secops-space-6);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: var(--secops-space-3);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--secops-text-heading);
+    }
+
+    .shield-badge {
+      background: #1a73e8;
+      color: white;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: var(--secops-space-2);
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--secops-text-secondary);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--secops-text-heading);
+      background-color: var(--secops-surface-hover);
+    }
+
+    .nav-tab-btn.active {
+      color: var(--secops-text-heading);
+      background-color: var(--secops-surface-high);
+      font-weight: 600;
+      box-shadow: inset 0 -2px 0 var(--secops-cta-primary);
+    }
+
+    .theme-toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--secops-surface-high);
+      border: 1px solid var(--secops-border-default);
+      color: var(--secops-text-primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--secops-surface-hover);
+      border-color: var(--secops-border-hover);
+    }
+
+    .main-content {
+      max-width: var(--showcase-max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: var(--secops-space-6);
+      flex: 1;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--secops-text-heading);
+      margin: var(--secops-space-6) 0 var(--secops-space-3) 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-desc {
+      color: var(--secops-text-secondary);
+      font-size: 14px;
+      margin-bottom: var(--secops-space-5);
+    }
+
+    /* Grid for Color Swatches */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--secops-space-4);
+      margin-bottom: var(--secops-space-6);
+    }
+
+    .swatch-card {
+      background-color: var(--secops-surface-container);
+      border: 1px solid var(--secops-border-default);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 120ms ease, border-color 120ms ease;
+    }
+
+    .swatch-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--secops-border-focus);
+    }
+
+    .swatch-color-box {
+      height: 72px;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 8px;
+    }
+
+    .swatch-info {
+      padding: 12px;
+    }
+
+    .swatch-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--secops-text-heading);
+      margin-bottom: 4px;
+    }
+
+    .swatch-hex {
+      font-family: var(--secops-font-family-mono);
+      font-size: 12px;
+      color: var(--secops-text-secondary);
+    }
+
+    .swatch-token {
+      font-family: var(--secops-font-family-mono);
+      font-size: 11px;
+      color: var(--secops-text-accent);
+      margin-top: 4px;
+      word-break: break-all;
+    }
+
+    /* Interactive SecOps Console Simulation */
+    .secops-sim-canvas {
+      background-color: var(--secops-surface-container);
+      border: 1px solid var(--secops-border-default);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: var(--secops-space-6);
+    }
+
+    .sim-topbar {
+      background-color: var(--secops-surface-low);
+      border-bottom: 1px solid var(--secops-border-default);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sim-warning-banner {
+      background-color: rgba(250, 123, 23, 0.15);
+      border: 1px solid rgba(250, 123, 23, 0.35);
+      color: var(--secops-status-high);
+      padding: 8px 16px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sim-query-pane {
+      padding: 16px;
+      background-color: var(--secops-surface-low);
+      border-bottom: 1px solid var(--secops-border-default);
+    }
+
+    .sim-editor {
+      background-color: var(--secops-editor-bg);
+      border: 1px solid var(--secops-border-default);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-family: var(--secops-font-family-mono);
+      font-size: 13px;
+      color: var(--secops-text-primary);
+      margin-bottom: 12px;
+    }
+
+    .syntax-kw { color: #8ab4f8; font-weight: 600; }
+    .syntax-field { color: #81c995; }
+    .syntax-op { color: #f28b82; }
+    .syntax-val { color: #fcc934; }
+
+    .sim-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .sim-chart-container {
+      padding: 16px;
+      background-color: var(--secops-surface-container);
+      border-bottom: 1px solid var(--secops-border-default);
+    }
+
+    .sim-chart-bars {
+      display: flex;
+      align-items: flex-end;
+      height: 70px;
+      gap: 4px;
+      padding-top: 10px;
+    }
+
+    .chart-bar {
+      flex: 1;
+      background-color: #1a73e8;
+      border-radius: 2px 2px 0 0;
+      min-height: 4px;
+      transition: height 300ms ease;
+    }
+
+    .chart-bar.alert {
+      background-color: #ea4335;
+    }
+
+    .sim-workspace {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 360px;
+    }
+
+    .sim-sidebar {
+      background-color: var(--secops-surface-low);
+      border-right: 1px solid var(--secops-border-default);
+      padding: 12px;
+    }
+
+    .sidebar-header {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--secops-text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 8px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--secops-text-primary);
+      cursor: pointer;
+      margin-bottom: 2px;
+    }
+
+    .filter-item:hover {
+      background-color: var(--secops-surface-hover);
+    }
+
+    .filter-count {
+      color: var(--secops-text-secondary);
+      font-family: var(--secops-font-family-mono);
+      font-size: 11px;
+    }
+
+    .sim-table-area {
+      overflow-x: auto;
+      background-color: var(--secops-surface-container);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--secops-surface-highest);
+      color: var(--secops-text-heading);
+      border: 1px solid var(--secops-border-focus);
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 200ms ease;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Showcase Header -->
+  <header class="showcase-header">
+    <div class="brand-group">
+      <div class="brand-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L3 6V12C3 17.52 6.84 22.74 12 24C17.16 22.74 21 17.52 21 12V6L12 2Z" fill="#1A73E8"/>
+          <path d="M12 4.18L19 7.3V12C19 16.36 16.02 20.48 12 21.64C7.98 20.48 5 16.36 5 12V7.3L12 4.18Z" fill="#8AB4F8"/>
+          <path d="M12 6.5L7 8.72V12C7 15.2 9.13 18.2 12 19.1C14.87 18.2 17 15.2 17 12V8.72L12 6.5Z" fill="#161625"/>
+        </svg>
+        <span>Google SecOps Theme</span>
+      </div>
+      <span class="shield-badge">v1.0.0</span>
+    </div>
+
+    <!-- Navigation View Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab-btn active" onclick="switchView('showcase')">Live Preview</button>
+      <button class="nav-tab-btn" onclick="switchView('colors')">Color Tokens</button>
+      <button class="nav-tab-btn" onclick="switchView('typography')">Typography</button>
+      <button class="nav-tab-btn" onclick="switchView('code')">Quick Start</button>
+    </nav>
+
+    <!-- Theme Switcher -->
+    <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">
+      <span id="themeIcon">🌙</span>
+      <span id="themeLabel">Dark Mode</span>
+    </button>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+
+    <!-- VIEW 1: LIVE CONSOLE SIMULATION -->
+    <div id="view-showcase">
+      <div class="section-title">
+        <span>⚡ Live SecOps Console Simulation</span>
+      </div>
+      <div class="section-desc">
+        High-fidelity representation of the Google SecOps UDM search interface, matching the visual styles verified from Chrome DevTools.
+      </div>
+
+      <!-- Warning Banner -->
+      <div class="sim-warning-banner">
+        <span>⚠️ <strong>WARNING</strong>: Showing sampled events for broad query range. Filter with specific metadata attributes.</span>
+        <button class="secops-btn secops-btn-ghost" style="padding: 0 4px; height: 24px;">✕</button>
+      </div>
+
+      <div class="secops-sim-canvas">
+        <!-- Top Sim Header -->
+        <div class="sim-topbar">
+          <div style="display:flex; align-items:center; gap: 12px;">
+            <strong style="color: var(--secops-text-heading);">SIEM Search</strong>
+            <span class="secops-badge secops-badge-event">YL2 Engine</span>
+          </div>
+          <div style="display:flex; gap: 8px;">
+            <button class="secops-btn secops-btn-outlined" style="height: 28px; font-size: 12px;">🕒 History</button>
+            <button class="secops-btn secops-btn-outlined" style="height: 28px; font-size: 12px;">⚙️ Settings</button>
+          </div>
+        </div>
+
+        <!-- Query Editor Pane -->
+        <div class="sim-query-pane">
+          <div class="sim-editor">
+            <span class="syntax-field">metadata</span>.<span class="syntax-field">event_timestamp</span>.<span class="syntax-field">seconds</span> <span class="syntax-op">&gt;</span> <span class="syntax-val">0</span> <span class="syntax-kw">AND</span> <span class="syntax-field">metadata</span>.<span class="syntax-field">log_type</span> <span class="syntax-op">=</span> <span class="syntax-val">"GCP_LOADBALANCING"</span>
+          </div>
+          <div class="sim-controls">
+            <div style="display:flex; gap: 8px; align-items:center;">
+              <span class="secops-badge secops-badge-low">UDM Lookup</span>
+              <span style="font-size: 12px; color: var(--secops-text-secondary);">Range: Last 24 Hours</span>
+            </div>
+            <div style="display:flex; gap: 8px;">
+              <button class="secops-btn secops-btn-outlined">Clear</button>
+              <button class="secops-btn secops-btn-primary">▶ Run Search</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Histogram -->
+        <div class="sim-chart-container">
+          <div style="display:flex; justify-content:space-between; margin-bottom: 8px; font-size: 12px; color: var(--secops-text-secondary);">
+            <span>Activity Over Time (30,000+ Events)</span>
+            <div style="display:flex; gap: 12px;">
+              <span style="display:flex; align-items:center; gap:4px;"><span style="width:8px;height:8px;background:#1a73e8;display:inline-block;border-radius:2px;"></span> Events</span>
+              <span style="display:flex; align-items:center; gap:4px;"><span style="width:8px;height:8px;background:#ea4335;display:inline-block;border-radius:2px;"></span> Alerts</span>
+            </div>
+          </div>
+          <div class="sim-chart-bars">
+            <div class="chart-bar" style="height: 20%;"></div>
+            <div class="chart-bar" style="height: 35%;"></div>
+            <div class="chart-bar" style="height: 15%;"></div>
+            <div class="chart-bar" style="height: 50%;"></div>
+            <div class="chart-bar" style="height: 25%;"></div>
+            <div class="chart-bar" style="height: 40%;"></div>
+            <div class="chart-bar" style="height: 10%;"></div>
+            <div class="chart-bar" style="height: 60%;"></div>
+            <div class="chart-bar alert" style="height: 75%;"></div>
+            <div class="chart-bar alert" style="height: 95%;"></div>
+            <div class="chart-bar" style="height: 30%;"></div>
+            <div class="chart-bar" style="height: 45%;"></div>
+          </div>
+        </div>
+
+        <!-- Gemini AI Card -->
+        <div style="padding: 16px; border-bottom: 1px solid var(--secops-border-default);">
+          <div class="secops-gemini-card">
+            <div class="secops-gemini-header">
+              <span class="sparkle">✦</span>
+              <span>Gemini SecOps Summary</span>
+            </div>
+            <div style="font-size: 13px; line-height: 1.6; color: var(--secops-text-primary);">
+              Observed <strong>30,000+</strong> events spanning 14 log sources. Spike in outbound <code style="color:var(--secops-text-code);">NETWORK_CONNECTION</code> events detected from internal host <code style="color:var(--secops-text-code);">10.10.20.60</code> targeting suspicious external IP endpoints.
+            </div>
+            <div style="margin-top: 12px; display: flex; gap: 8px;">
+              <button class="secops-btn secops-btn-outlined" style="height: 26px; font-size: 12px;">Filter for host 10.10.20.60</button>
+              <button class="secops-btn secops-btn-outlined" style="height: 26px; font-size: 12px;">Investigate in Cases</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Workspace (Sidebar + Table) -->
+        <div class="sim-workspace">
+          <!-- Sidebar -->
+          <div class="sim-sidebar">
+            <div class="sidebar-header">Grouped Fields</div>
+            <div class="filter-item">
+              <span>› ip</span>
+              <span class="filter-count">9.5k</span>
+            </div>
+            <div class="filter-item">
+              <span>› namespace</span>
+              <span class="filter-count">6.3k</span>
+            </div>
+            <div class="filter-item">
+              <span>› user</span>
+              <span class="filter-count">3.9k</span>
+            </div>
+            <div class="filter-item">
+              <span>› hostname</span>
+              <span class="filter-count">2.7k</span>
+            </div>
+            <div class="filter-item">
+              <span>› domain</span>
+              <span class="filter-count">2.6k</span>
+            </div>
+            <div class="filter-item">
+              <span>› hash</span>
+              <span class="filter-count">1.1k</span>
+            </div>
+          </div>
+
+          <!-- UDM Event Table -->
+          <div class="sim-table-area">
+            <table class="secops-table">
+              <thead>
+                <tr>
+                  <th>Status / Severity</th>
+                  <th>Timestamp</th>
+                  <th>Event Type</th>
+                  <th>Summary</th>
+                  <th>User</th>
+                  <th>Hostname</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="secops-badge secops-badge-critical">Critical Alert</span></td>
+                  <td class="col-mono">2026-08-17T11:15:45.232</td>
+                  <td><span class="secops-badge secops-badge-low">NETWORK_CONNECTION</span></td>
+                  <td>LogStory &gt; Outbound C2 beacon traffic to 198.51.100.4</td>
+                  <td>admin_sec</td>
+                  <td>dcserver.vlab.lan</td>
+                </tr>
+                <tr>
+                  <td><span class="secops-badge secops-badge-high">High Risk</span></td>
+                  <td class="col-mono">2026-08-17T11:14:44.793</td>
+                  <td><span class="secops-badge secops-badge-low">PROCESS_LAUNCH</span></td>
+                  <td>powershell.exe -enc SQBFAFgA... executed</td>
+                  <td>svc_backup</td>
+                  <td>workstation-09</td>
+                </tr>
+                <tr>
+                  <td><span class="secops-badge secops-badge-medium">Medium</span></td>
+                  <td class="col-mono">2026-08-17T11:13:43.790</td>
+                  <td><span class="secops-badge secops-badge-event">USER_LOGIN</span></td>
+                  <td>Multi-factor auth bypass attempt</td>
+                  <td>c.martin</td>
+                  <td>auth-proxy-01</td>
+                </tr>
+                <tr>
+                  <td><span class="secops-badge secops-badge-success">Resolved</span></td>
+                  <td class="col-mono">2026-08-17T11:12:43.345</td>
+                  <td><span class="secops-badge secops-badge-low">NETWORK_DHCP</span></td>
+                  <td>Lease renewed for 10.0.4.15</td>
+                  <td>—</td>
+                  <td>gateway.lan</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: COLOR TOKENS PALETTE -->
+    <div id="view-colors" class="hidden">
+      <div class="section-title">
+        <span>🎨 Design Token Color Palette</span>
+      </div>
+      <div class="section-desc">
+        Click on any swatch card to copy its CSS Variable token or Hex code.
+      </div>
+
+      <h3 style="color: var(--secops-text-heading); margin-bottom: 12px;">Surfaces & Backgrounds</h3>
+      <div class="color-grid">
+        <div class="swatch-card" onclick="copyToken('--secops-bg-canvas', '#161625')">
+          <div class="swatch-color-box" style="background: var(--secops-bg-canvas); border-bottom: 1px solid var(--secops-border-default);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Canvas / Base</div>
+            <div class="swatch-token">--secops-bg-canvas</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-surface-low', '#1b2134')">
+          <div class="swatch-color-box" style="background: var(--secops-surface-low); border-bottom: 1px solid var(--secops-border-default);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface Low</div>
+            <div class="swatch-token">--secops-surface-low</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-surface-container', '#1f283e')">
+          <div class="swatch-color-box" style="background: var(--secops-surface-container); border-bottom: 1px solid var(--secops-border-default);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface Container</div>
+            <div class="swatch-token">--secops-surface-container</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-surface-high', '#27324d')">
+          <div class="swatch-color-box" style="background: var(--secops-surface-high); border-bottom: 1px solid var(--secops-border-default);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface High</div>
+            <div class="swatch-token">--secops-surface-high</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-editor-bg', '#101420')">
+          <div class="swatch-color-box" style="background: var(--secops-editor-bg); border-bottom: 1px solid var(--secops-border-default);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Editor Canvas</div>
+            <div class="swatch-token">--secops-editor-bg</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="color: var(--secops-text-heading); margin-bottom: 12px;">Semantic Severity & Status</h3>
+      <div class="color-grid">
+        <div class="swatch-card" onclick="copyToken('--secops-status-critical', '#ff5a50')">
+          <div class="swatch-color-box" style="background: var(--secops-status-critical);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Critical Severity</div>
+            <div class="swatch-token">--secops-status-critical</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-status-high', '#fa7b17')">
+          <div class="swatch-color-box" style="background: var(--secops-status-high);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">High Severity</div>
+            <div class="swatch-token">--secops-status-high</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-status-medium', '#fcc934')">
+          <div class="swatch-color-box" style="background: var(--secops-status-medium);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Medium Severity</div>
+            <div class="swatch-token">--secops-status-medium</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-status-low', '#24c1e0')">
+          <div class="swatch-color-box" style="background: var(--secops-status-low);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Low / Info</div>
+            <div class="swatch-token">--secops-status-low</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-status-success', '#54ab98')">
+          <div class="swatch-color-box" style="background: var(--secops-status-success);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Success / Clean</div>
+            <div class="swatch-token">--secops-status-success</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="color: var(--secops-text-heading); margin-bottom: 12px;">Brand & Interactive</h3>
+      <div class="color-grid">
+        <div class="swatch-card" onclick="copyToken('--secops-cta-primary', '#1a73e8')">
+          <div class="swatch-color-box" style="background: var(--secops-cta-primary);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Google Blue CTA</div>
+            <div class="swatch-token">--secops-cta-primary</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-text-accent', '#8ab4f8')">
+          <div class="swatch-color-box" style="background: var(--secops-text-accent);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Accent / Focus</div>
+            <div class="swatch-token">--secops-text-accent</div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyToken('--secops-chip-event', '#d272ff')">
+          <div class="swatch-color-box" style="background: var(--secops-chip-event);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Event Purple</div>
+            <div class="swatch-token">--secops-chip-event</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: TYPOGRAPHY -->
+    <div id="view-typography" class="hidden">
+      <div class="section-title">
+        <span>🔤 Typography & Type Scale</span>
+      </div>
+      <div class="section-desc">
+        Google Sans and Google Sans Mono typography hierarchy.
+      </div>
+
+      <div style="background: var(--secops-surface-container); border: 1px solid var(--secops-border-default); border-radius: 8px; padding: 24px;">
+        <div style="margin-bottom: 24px; border-bottom: 1px solid var(--secops-border-subtle); padding-bottom: 16px;">
+          <div style="font-size: 11px; color: var(--secops-text-secondary); text-transform: uppercase;">Display Header · 22px / Semibold 600</div>
+          <div style="font-size: 22px; font-weight: 600; color: var(--secops-text-heading); margin-top: 4px;">SIEM & SOAR Threat Detection Platform</div>
+        </div>
+        <div style="margin-bottom: 24px; border-bottom: 1px solid var(--secops-border-subtle); padding-bottom: 16px;">
+          <div style="font-size: 11px; color: var(--secops-text-secondary); text-transform: uppercase;">Section Title · 16px / Semibold 600</div>
+          <div style="font-size: 16px; font-weight: 600; color: var(--secops-text-heading); margin-top: 4px;">Universal Data Model (UDM) Event Telemetry</div>
+        </div>
+        <div style="margin-bottom: 24px; border-bottom: 1px solid var(--secops-border-subtle); padding-bottom: 16px;">
+          <div style="font-size: 11px; color: var(--secops-text-secondary); text-transform: uppercase;">Body Text · 14px / Regular 400</div>
+          <div style="font-size: 14px; color: var(--secops-text-primary); margin-top: 4px; line-height: 1.5;">Chronicle processes millions of events per second, correlating normalized telemetry against global threat intelligence feeds.</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: var(--secops-text-secondary); text-transform: uppercase;">Monospace / Code · 13px / Mono 400</div>
+          <div style="font-family: var(--secops-font-family-mono); font-size: 13px; color: var(--secops-text-code); margin-top: 4px;">principal.hostname = "dcserver.vlab.lan" AND target.ip = "198.51.100.4"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: QUICK START & CODE -->
+    <div id="view-code" class="hidden">
+      <div class="section-title">
+        <span>📦 Installation & Quick Start</span>
+      </div>
+      <div class="section-desc">
+        Integrate the Google SecOps theme into any web application or dashboard.
+      </div>
+
+      <div style="background: var(--secops-surface-container); border: 1px solid var(--secops-border-default); border-radius: 8px; padding: 24px;">
+        <h4 style="color: var(--secops-text-heading); margin-top:0;">1. Install via NPM</h4>
+        <pre style="background: var(--secops-editor-bg); padding: 12px; border-radius: 4px; font-family: var(--secops-font-family-mono); color: var(--secops-text-accent);">npm install @secops/theme</pre>
+
+        <h4 style="color: var(--secops-text-heading); margin-top: 20px;">2. Import CSS Tokens & Styles</h4>
+        <pre style="background: var(--secops-editor-bg); padding: 12px; border-radius: 4px; font-family: var(--secops-font-family-mono); color: var(--secops-text-code); overflow-x: auto;">
+&lt;!-- Include Fonts --&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet"&gt;
+
+&lt;!-- Include SecOps Theme Bundle --&gt;
+&lt;link rel="stylesheet" href="dist/tokens.css"&gt;
+&lt;link rel="stylesheet" href="dist/secops-theme.css"&gt;</pre>
+
+        <h4 style="color: var(--secops-text-heading); margin-top: 20px;">3. Set Theme Attribute</h4>
+        <pre style="background: var(--secops-editor-bg); padding: 12px; border-radius: 4px; font-family: var(--secops-font-family-mono); color: var(--secops-text-code);">
+&lt;html lang="en" data-theme="dark" class="smp-theme-dark"&gt; ... &lt;/html&gt;
+&lt;!-- or --&gt;
+&lt;html lang="en" data-theme="light" class="smp-theme-light"&gt; ... &lt;/html&gt;</pre>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      
+      if (isDark) {
+        html.setAttribute('data-theme', 'light');
+        html.classList.remove('smp-theme-dark');
+        html.classList.add('smp-theme-light');
+        document.getElementById('themeIcon').textContent = '☀️';
+        document.getElementById('themeLabel').textContent = 'Light Mode';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        html.classList.remove('smp-theme-light');
+        html.classList.add('smp-theme-dark');
+        document.getElementById('themeIcon').textContent = '🌙';
+        document.getElementById('themeLabel').textContent = 'Dark Mode';
+      }
+    }
+
+    function switchView(viewName) {
+      const views = ['showcase', 'colors', 'typography', 'code'];
+      views.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        if (el) {
+          if (v === viewName) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+      });
+
+      const buttons = document.querySelectorAll('.nav-tab-btn');
+      buttons.forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick') || '';
+        if (onclickAttr.includes("'" + viewName + "'")) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    function copyToken(token, hex) {
+      const textToCopy = `var(${token})`;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        showToast(`Copied ${token} to clipboard!`);
+      }).catch(() => {
+        showToast(`Copied: ${token}`);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+  </script>
+</body>
+</html>

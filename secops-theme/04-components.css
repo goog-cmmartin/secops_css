@@ -1,0 +1,45 @@
+/* 04-components.css - Workdesk Cards, Case Items, Tabs & Badges */
+
+/* Workdesk Case Cards */
+homepage-case-item,
+.homepage-case-item,
+smp-card,
+.smp-card {
+  background: rgba(31, 41, 55, 0.7) !important;
+  border: 1px solid var(--secops-border-highlight) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: var(--secops-shadow-glow) !important;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+homepage-case-item:hover,
+smp-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--secops-brand-primary) !important;
+}
+
+/* Tab Navigation */
+smp-nav-tabs,
+.smp-nav-tabs {
+  border-bottom: 1px solid var(--secops-border-subtle) !important;
+}
+
+/* Priority & Severity Badges */
+priority-indicator,
+smp-badge,
+.smp-badge {
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  padding: 4px 10px !important;
+}
+
+/* Buttons & Toggle Groups */
+smp-button-toggle-group,
+.smp-button-toggle-group {
+  border-radius: 20px !important;
+  background-color: var(--secops-bg-surface-1) !important;
+  border: 1px solid var(--secops-border-subtle) !important;
+}

@@ -1,0 +1,39 @@
+/* 01-tokens.css - Google SecOps Design Tokens & Uno Variables */
+
+:root {
+  /* Core Theme Design Tokens */
+  --secops-brand-primary: #38bdf8;
+  --secops-brand-accent: #818cf8;
+  --secops-brand-success: #34d399;
+  --secops-brand-warning: #fbbf24;
+  --secops-brand-danger: #f87171;
+
+  /* Modern Surface Palette */
+  --secops-bg-base: #0b0f19;
+  --secops-bg-surface-1: #111827;
+  --secops-bg-surface-2: #1f2937;
+  --secops-bg-surface-3: #374151;
+
+  /* Typography */
+  --secops-text-primary: #f9fafb;
+  --secops-text-secondary: #9ca3af;
+  --secops-text-muted: #6b7280;
+
+  /* Borders & Shadows */
+  --secops-border-subtle: rgba(255, 255, 255, 0.08);
+  --secops-border-highlight: rgba(56, 189, 248, 0.3);
+  --secops-shadow-glow: 0 10px 30px -5px rgba(15, 23, 42, 0.8);
+
+  /* Overrides for Google SecOps Uno Design System */
+  --uno-ref-color--neutral-0: var(--secops-bg-base) !important;
+  --uno-ref-color--neutral-100: var(--secops-bg-surface-1) !important;
+  --uno-ref-color--neutral-200: var(--secops-bg-surface-2) !important;
+  
+  --uno-comp-header--container-background-color: var(--secops-bg-surface-1) !important;
+  --uno-comp-side-panel--container-background-color: var(--secops-bg-base) !important;
+  
+  /* Overrides for Material Chronicle (--mc-*) Variables */
+  --mc-feedback-critical-color: var(--secops-brand-danger) !important;
+  --mc-feedback-warning-color: var(--secops-brand-warning) !important;
+  --mc-feedback-success-color: var(--secops-brand-success) !important;
+}
