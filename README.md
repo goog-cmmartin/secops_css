@@ -6,8 +6,6 @@
 
 A production-ready design system, CSS token library, and style guide for **Google SecOps** (Chronicle SIEM & SOAR).
 
-Verified and extracted directly from the live Google SecOps console (`preview-americas-sdl.backstory.chronicle.security`) using Chrome DevTools MCP inspection.
-
 ---
 
 ## 🌟 Highlights
